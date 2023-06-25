@@ -92,7 +92,7 @@ const LoginForm = () => {
       <div>
         <Button
           type="submit"
-          color="secondary"
+          color="gradient"
           auto
           css={{
             margin: "15px",

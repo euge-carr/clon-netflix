@@ -9,6 +9,6 @@ export const links = [
     },
     {
       name: "Películas",
-      path: "/peliculas",
+      path: "/movies",
     }
 ];

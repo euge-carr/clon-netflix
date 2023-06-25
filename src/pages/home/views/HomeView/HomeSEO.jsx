@@ -5,7 +5,7 @@ export const HomeSEO = () => {
     return (
         <Helmet>
             <title>Home - ClonNetflix</title>
-            <meta name="descriṕtion" content="Home" />
+            <meta name="description" content="Home" />
         </Helmet>
     )
 }

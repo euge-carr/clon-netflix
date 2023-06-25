@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuth } from "../../../../hooks/useAuth";
-import LoginForm from '../../../../components/Login/LoginForm'
+import LoginForm from "../../../../components/Login/LoginForm";
 import { LoginSEO } from "./LoginSEO";
 
 
@@ -9,7 +9,7 @@ const LoginView = () => {
 
   return (
     <div>
-      <LoginSEO/>
+      <LoginSEO />
       <LoginForm />
     </div>
   );
