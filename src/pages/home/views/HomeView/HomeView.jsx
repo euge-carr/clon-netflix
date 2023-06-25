@@ -1,5 +1,6 @@
 import React from "react";
-import { useAuth } from "../../../hooks/useAuth";
+import { useAuth } from "../../../../hooks/useAuth";
+import { HomeSEO } from "./HomeSEO";
 
 const HomeView = () => {
   const { logout, user } = useAuth();
@@ -10,7 +11,7 @@ const HomeView = () => {
 
   return (
     <div>
-      <h1>HOME</h1>
+      <h1><HomeSEO/></h1>
       <h3>Bienvenido {user?.email}</h3>
 
       <button onClick={handleLogout}>Cerrar Sesión</button>
