@@ -1,14 +1,15 @@
 import React from "react";
 import useSWR from "swr";
+import axios from "axios";
 
-const fetcher = url => fetch(url).then(r => r.json());
+const getMovies = async () => {
+  const movies = await axios("https://api.themoviedb.org/3/movie/popular?api_key=e44277a572d1f0c2b1e29b4f1ad5c401&language=es-ES&page=1");
+  return movies.data;
+};
 
 const MoviesView = () => {
 
-  const { data: movies, error, isLoading: isLoadingMovies } = useSWR(
-    'https://api.themoviedb.org/3/movie/popular?api_key=e44277a572d1f0c2b1e29b4f1ad5c401&language=es-ES&page=1', 
-    fetcher
-  );
+  const { data: movies, error, isLoading: isLoadingMovies } = useSWR("getMovies", getMovies); 
   
   if (error) {
     return <div>Error al cargar las películas</div>;
