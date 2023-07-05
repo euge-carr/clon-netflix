@@ -1,14 +1,9 @@
 import React from "react";
 import { useAuth } from "../../../../hooks/useAuth";
 import { HomeSEO } from "./HomeSEO";
-import { Button, Container, Text, Card, Grid, Row } from "@nextui-org/react";
+import { Button, Container, Text, Card } from "@nextui-org/react";
 import useSWR from "swr";
-import axios from "axios";
-
-const getMovies = async () => {
-  const movies = await axios("https://api.themoviedb.org/3/movie/popular?api_key=e44277a572d1f0c2b1e29b4f1ad5c401&language=es-ES&page=1");
-  return movies.data;
-};
+import { getMovies } from "../../../../services/jsonplaceholder.service";
 
 const HomeView = () => {
   const { logout, user } = useAuth();
@@ -37,16 +32,10 @@ const HomeView = () => {
       height: "100vh",
     }}>
       <div>
+        <HomeSEO/>
+      </div>
+      <div>
         <Card css={{ p: "$6", mw: "400px" }}>
-          <Card.Header>
-            <Grid.Container css={{ pl: "$6" }}>
-              <Grid xs={12}>
-                <Text h4 css={{ lineHeight: "$xs" }}>
-                  <HomeSEO/>
-                </Text>
-              </Grid>
-            </Grid.Container>
-          </Card.Header>
           <Card.Body css={{ py: "$2" }}>
             <Text
               h4
