@@ -3,7 +3,7 @@ import { useAuth } from "../../../../hooks/useAuth";
 import { HomeSEO } from "./HomeSEO";
 import { Button, Container, Text, Card } from "@nextui-org/react";
 import useSWR from "swr";
-import { getMovies } from "../../../../services/tmdb.service";
+import { getPopularMovies } from "../../../../services/tmdb.service";
 
 const HomeView = () => {
   const { logout, user } = useAuth();
@@ -12,7 +12,7 @@ const HomeView = () => {
     logout();
   };
 
-  const { data: movies, error, isLoading: isLoadingMovies } = useSWR("getMovies", getMovies); 
+  const { data: movies, error, isLoading: isLoadingMovies } = useSWR("getMovies", getPopularMovies); 
   
   if (error) {
     return <div>Error al cargar las películas</div>;
@@ -58,12 +58,12 @@ const HomeView = () => {
             </Button>
           </Card.Footer>
       </Card>
-    </div>
-    <div>
-      {movies.results.map((movie) => {
-        return <div key={movie.id}>{movie.title}</div>;
-      })}
-    </div>
+      </div>
+      <div>
+        {movies.results.map((movie) => {
+          return <div key={movie.id}>{movie.title}</div>;
+        })}
+      </div>
   </Container>
   );
 };
