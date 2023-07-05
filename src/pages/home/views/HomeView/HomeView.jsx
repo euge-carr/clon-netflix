@@ -3,7 +3,7 @@ import { useAuth } from "../../../../hooks/useAuth";
 import { HomeSEO } from "./HomeSEO";
 import { Button, Container, Text, Card } from "@nextui-org/react";
 import useSWR from "swr";
-import { getMovies } from "../../../../services/jsonplaceholder.service";
+import { getMovies } from "../../../../services/tmdb.service";
 
 const HomeView = () => {
   const { logout, user } = useAuth();
