@@ -28,7 +28,7 @@ export const authReducer = (state =authInitialState, {type:authType , payload})=
             return{
                 ...state,
                 user:null,
-                insLoggedIn:false,
+                isLoggedIn:false,
             };
                 
         default:

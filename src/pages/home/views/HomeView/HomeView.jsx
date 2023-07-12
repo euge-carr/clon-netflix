@@ -4,6 +4,9 @@ import { HomeSEO } from "./HomeSEO";
 import { Button, Container, Text, Card } from "@nextui-org/react";
 import useSWR from "swr";
 import { getPopularMovies } from "../../../../services/tmdb.service";
+import SwiperComponent from "../../../../components/Swiper/SwiperComponent";
+import { SwiperSlide } from "swiper/react";
+import CardGeneric from "../../../../components/CardGeneric/CardGeneric";
 
 const HomeView = () => {
   const { logout, user } = useAuth();
@@ -13,6 +16,7 @@ const HomeView = () => {
   };
 
   const { data: movies, error, isLoading: isLoadingMovies } = useSWR("getMovies", getPopularMovies); 
+  
   
   if (error) {
     return <div>Error al cargar las películas</div>;
@@ -29,13 +33,13 @@ const HomeView = () => {
       flexDirection: "column",
       alignItems: "center",
       justifyContent: "center",
-      height: "100vh",
+      height: "80vh",
     }}>
       <div>
         <HomeSEO/>
       </div>
       <div>
-        <Card css={{ p: "$6", mw: "400px" }}>
+        <Card css={{ p: "$6", mw: "400px" , mb:"$18"}}>
           <Card.Body css={{ py: "$2" }}>
             <Text
               h4
@@ -56,13 +60,27 @@ const HomeView = () => {
             >
               Cerrar Sesión
             </Button>
+            
           </Card.Footer>
       </Card>
       </div>
+      
       <div>
-        {movies.results.map((movie) => {
+      <SwiperComponent
+      >
+      {movies.results.map((movie) => (
+        <SwiperSlide key={movie.id}>
+          <CardGeneric movie={movie.title} ></CardGeneric>
+        </SwiperSlide>
+      ))
+      
+      
+      
+      /*{
           return <div key={movie.id}>{movie.title}</div>;
-        })}
+        })*/}
+      </SwiperComponent>
+      
       </div>
   </Container>
   );
