@@ -3,7 +3,6 @@ import { useAuth } from "../../../../hooks/useAuth";
 import LoginForm from "../../../../components/Login/LoginForm";
 import { LoginSEO } from "./LoginSEO";
 
-
 const LoginView = () => {
   const { login } = useAuth();
 

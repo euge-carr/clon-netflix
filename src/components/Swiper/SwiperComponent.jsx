@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 import { Swiper } from "swiper/react";
 
@@ -14,7 +14,7 @@ const SwiperComponent = ({ children, ...props }) => {
       slidesPerView="auto"
       navigation
       swipeHandler={true}
-      width="auto"      
+      width="auto"
       {...props}
     >
       {children}

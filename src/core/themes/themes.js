@@ -11,5 +11,5 @@ export const lightTheme = createTheme({
   type: "light",
   theme: {
     colors: {},
-  }
+  },
 });

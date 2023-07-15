@@ -5,7 +5,6 @@ import ProtectedRoute from "./ProtectedRoute";
 import PublicRoute from "./PublicRoute";
 import GeneralLayout from "../layouts/general/GeneralLayout";
 
-
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -24,7 +23,7 @@ export const Router = createBrowserRouter([
         <PublicRoute>
           <LoginView />
         </PublicRoute>
-      </GeneralLayout> 
+      </GeneralLayout>
     ),
   },
 ]);

@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import { links } from "../../core/routes/links.js";
 
 const Nav = () => {
-  
   return (
     <Navbar isBordered variant="sticky">
       <Navbar.Toggle showIn="xs" />
@@ -36,7 +35,7 @@ const Nav = () => {
         ))}
       </Navbar.Content>
     </Navbar>
-  )
+  );
 };
 
 export default Nav;

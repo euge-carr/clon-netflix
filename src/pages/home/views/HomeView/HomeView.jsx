@@ -6,7 +6,7 @@ import useSWR from "swr";
 import { getPopularMovies } from "../../../../services/tmdb.service";
 import SwiperComponent from "../../../../components/Swiper/SwiperComponent";
 import { SwiperSlide } from "swiper/react";
-import CardGeneric from "../../../../components/CardGeneric/CardGeneric";
+import { imagePaths } from "../../../../services/imagePaths";
 
 const HomeView = () => {
   const { logout, user } = useAuth();
@@ -63,31 +63,31 @@ const HomeView = () => {
         </Card>
       </div>
       <div>
-      <SwiperComponent>
-    {movies.results.map((movie) => (
-      <SwiperSlide key={movie.id}>
-        <Card css={{ p: "$6", mw: "400px", mb: "$18" }}>
-          <Card.Body css={{ py: "$2" }}>
-            <Text h4 color="secondary">
-              {movie.title}
-            </Text>
-          </Card.Body>
-          <Card.Footer
-            css={{
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              css={{ width: "100%" }}
-            />
-          </Card.Footer>
-        </Card>
-      </SwiperSlide>
-    ))}
-  </SwiperComponent>
+        <SwiperComponent>
+          {movies.results.map((movie) => (
+            <SwiperSlide key={movie.id}>
+              <Card css={{ p: "$6", mw: "400px", mb: "$18" }}>
+                <Card.Body css={{ py: "$2" }}>
+                  <Text h4 color="secondary">
+                    {movie.title}
+                  </Text>
+                </Card.Body>
+                <Card.Footer
+                  css={{
+                    display: "flex",
+                    justifyContent: "center",
+                  }}
+                >
+                  <img
+                    src={`${imagePaths.base}/${imagePaths.posterSize}${movie.poster_path}`}
+                    alt={movie.title}
+                    css={{ width: "100%" }}
+                  />
+                </Card.Footer>
+              </Card>
+            </SwiperSlide>
+          ))}
+        </SwiperComponent>
       </div>
     </Container>
   );

@@ -9,5 +9,5 @@ export const useAuth = () => {
     isLoggedIn,
     login,
     logout,
-     };
+  };
 };
