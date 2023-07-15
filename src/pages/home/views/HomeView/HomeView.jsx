@@ -15,74 +15,81 @@ const HomeView = () => {
     logout();
   };
 
-  const { data: movies, error, isLoading: isLoadingMovies } = useSWR("getMovies", getPopularMovies); 
-  
-  
+  const {
+    data: movies,
+    error,
+    isLoading: isLoadingMovies,
+  } = useSWR("getMovies", getPopularMovies);
+  console.log("movies:", movies);
   if (error) {
     return <div>Error al cargar las películas</div>;
   }
 
-  if (isLoadingMovies){
-    return <div>Cargando...</div>
+  if (isLoadingMovies) {
+    return <div>Cargando...</div>;
   }
 
   return (
     <Container
-    css={{
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      justifyContent: "center",
-      height: "80vh",
-    }}>
+      css={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "80vh",
+      }}
+    >
       <div>
-        <HomeSEO/>
+        <HomeSEO />
       </div>
+
       <div>
-        <Card css={{ p: "$6", mw: "400px" , mb:"$18"}}>
+        <Card css={{ p: "$6", mw: "400px", mb: "15rem", mt: "-3rem" }}>
           <Card.Body css={{ py: "$2" }}>
-            <Text
-              h4
-              color="secondary"
-            >
+            <Text h4 color="secondary">
               Bienvenido {user?.email}!
             </Text>
           </Card.Body>
           <Card.Footer
-            css={{ 
-              display: "flex", 
-              justifyContent: "center" 
-            }}>
-            <Button 
-              color="gradient" 
-              auto
-              onClick={handleLogout}
-            >
+            css={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <Button color="gradient" auto onClick={handleLogout}>
               Cerrar Sesión
             </Button>
-            
           </Card.Footer>
-      </Card>
+        </Card>
       </div>
-      
       <div>
-      <SwiperComponent
-      >
-      {movies.results.map((movie) => (
-        <SwiperSlide key={movie.id}>
-          <CardGeneric movie={movie.title} ></CardGeneric>
-        </SwiperSlide>
-      ))
-      
-      
-      
-      /*{
-          return <div key={movie.id}>{movie.title}</div>;
-        })*/}
-      </SwiperComponent>
-      
+      <SwiperComponent>
+    {movies.results.map((movie) => (
+      <SwiperSlide key={movie.id}>
+        <Card css={{ p: "$6", mw: "400px", mb: "$18" }}>
+          <Card.Body css={{ py: "$2" }}>
+            <Text h4 color="secondary">
+              {movie.title}
+            </Text>
+          </Card.Body>
+          <Card.Footer
+            css={{
+              display: "flex",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+              css={{ width: "100%" }}
+            />
+          </Card.Footer>
+        </Card>
+      </SwiperSlide>
+    ))}
+  </SwiperComponent>
       </div>
-  </Container>
+    </Container>
   );
 };
 
