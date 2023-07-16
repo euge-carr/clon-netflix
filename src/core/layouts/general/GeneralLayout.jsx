@@ -8,11 +8,12 @@ const GeneralLayout = ({ children }) => {
       style={{
         display: "flex",
         flexDirection: "column",
-        minWidth: "100vh",
+        minHeight: "100vh",
+        padding: "0 1rem",
       }}
     >
       <Nav />
-      {children}
+      <div style={{ flex: 1, marginTop: "1rem", marginBottom: "1rem" }}>{children}</div> 
       <Footer />
     </div>
   );

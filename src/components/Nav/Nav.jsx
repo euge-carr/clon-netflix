@@ -5,13 +5,18 @@ import { Link } from "react-router-dom";
 import { links } from "../../core/routes/links.js";
 
 const Nav = () => {
+  
   return (
     <Navbar isBordered variant="sticky">
       <Navbar.Toggle showIn="xs" />
       <Navbar.Brand
         css={{
           "@xs": {
+            w: "20%",
+          },
+          "@sm": {
             w: "12%",
+            font: "inherit",
           },
         }}
       >
@@ -35,7 +40,7 @@ const Nav = () => {
         ))}
       </Navbar.Content>
     </Navbar>
-  );
+  )
 };
 
 export default Nav;
