@@ -20,7 +20,7 @@ const HomeView = () => {
     error,
     isLoading: isLoadingMovies,
   } = useSWR("getMovies", getPopularMovies);
-  console.log("movies:", movies);
+
   if (error) {
     return <div>Error al cargar las películas</div>;
   }

@@ -13,7 +13,9 @@ const GeneralLayout = ({ children }) => {
       }}
     >
       <Nav />
-      <div style={{ flex: 1, marginTop: "1rem", marginBottom: "1rem" }}>{children}</div> 
+      <div style={{ flex: 1, marginTop: "1rem", marginBottom: "1rem" }}>
+        {children}
+      </div>
       <Footer />
     </div>
   );
